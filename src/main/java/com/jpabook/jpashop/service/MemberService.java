@@ -59,4 +59,11 @@ public class MemberService {
         }
 
     }
+
+    @Transactional
+    //커맨드와 쿼리를 분리해라, 조회로직과 변경 로직을 분리
+    public void update(Long id, String name) {
+        Member one = memberRepository.findOne(id);
+        one.setName(name);
+    }
 }
